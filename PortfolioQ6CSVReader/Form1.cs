@@ -16,5 +16,20 @@ namespace PortfolioQ6CSVReader
         {
             InitializeComponent();
         }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

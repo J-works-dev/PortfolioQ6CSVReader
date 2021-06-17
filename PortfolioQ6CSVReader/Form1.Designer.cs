@@ -116,6 +116,7 @@ namespace PortfolioQ6CSVReader
             this.buttonSave.TabIndex = 20;
             this.buttonSave.Text = "Save CSV";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonOpen
             // 
@@ -128,6 +129,7 @@ namespace PortfolioQ6CSVReader
             this.buttonOpen.TabIndex = 21;
             this.buttonOpen.Text = "Open CSV";
             this.buttonOpen.UseVisualStyleBackColor = false;
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
             // buttonChange
             // 
@@ -140,6 +142,7 @@ namespace PortfolioQ6CSVReader
             this.buttonChange.TabIndex = 23;
             this.buttonChange.Text = "Save Changes";
             this.buttonChange.UseVisualStyleBackColor = false;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // groupBox1
             // 
