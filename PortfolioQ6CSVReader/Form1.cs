@@ -30,13 +30,17 @@ namespace PortfolioQ6CSVReader
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
-
-            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            int selectedIndex = dataGridView.CurrentCell.RowIndex;
+            if (selectedIndex < dataGridView.Rows.Count - 1)
             {
+                buttonChange.Text = "Save Changes";
                 for (int i = 0; i < colCount; i++)
                 {
-                    textBoxs[i].Text = row.Cells[headers[i]].Value.ToString();
+                    textBoxs[i].Text = dataGridView.Rows[selectedIndex].Cells[headers[i]].Value.ToString();
                 }
+            } else
+            {
+                buttonChange.Text = "Add New Row";
             }
         }
 
@@ -58,9 +62,25 @@ namespace PortfolioQ6CSVReader
             }
             else
             {
-                for (int i = 0; i < colCount; i++)
+                if (selectedIndex > dataGridView.Rows.Count - 2)
                 {
-                    dataGridView.Rows[selectedIndex].Cells[headers[i]].Value = newData[i];
+                    DialogResult dialogResult = MessageBox.Show("Do you want to add Row?", "Delete Row", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridView.Rows[0].Clone();
+                        for (int i = 0; i < colCount; i++)
+                        {
+                            row.Cells[i].Value = newData[i];
+                        }
+                        dataGridView.Rows.Add(row);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < colCount; i++)
+                    {
+                        dataGridView.Rows[selectedIndex].Cells[headers[i]].Value = newData[i];
+                    }
                 }
             }
 
