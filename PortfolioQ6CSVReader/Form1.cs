@@ -60,14 +60,28 @@ namespace PortfolioQ6CSVReader
             {
                 for (int i = 0; i < colCount; i++)
                 {
-                    dataGridView.Rows[selectedIndex].Cells[headers[j]].Value = newData[i];
+                    dataGridView.Rows[selectedIndex].Cells[headers[i]].Value = newData[i];
                 }
+            }
+
+            for (int i = 0; i < colCount; i++)
+            {
+                textBoxs[i].Clear();
             }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure to Delete Row?", "Delete Row", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                dataGridView.Rows.RemoveAt(dataGridView.CurrentCell.RowIndex);
+            }
 
+            for (int i = 0; i < colCount; i++)
+            {
+                textBoxs[i].Clear();
+            }
         }
 
         private void clearModifyTable()
