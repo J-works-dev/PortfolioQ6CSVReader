@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioQ6CSVReader", "PortfolioQ6CSVReader\PortfolioQ6CSVReader.csproj", "{0968B5D0-CA02-4AB2-973B-D46BBE19EF93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0968B5D0-CA02-4AB2-973B-D46BBE19EF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0968B5D0-CA02-4AB2-973B-D46BBE19EF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0968B5D0-CA02-4AB2-973B-D46BBE19EF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0968B5D0-CA02-4AB2-973B-D46BBE19EF93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2312B36C-7FD6-4E52-96BE-059766870F37}
+	EndGlobalSection
+EndGlobal
