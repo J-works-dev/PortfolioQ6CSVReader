@@ -18,6 +18,8 @@ namespace PortfolioQ6CSVReader
         private Label[] labels;
         private TextBox[] textBoxs;
         string[] headers;
+        int colCount;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,14 +28,57 @@ namespace PortfolioQ6CSVReader
             textBoxs = new TextBox[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 };
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
 
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                for (int i = 0; i < colCount; i++)
+                {
+                    textBoxs[i].Text = row.Cells[headers[i]].Value.ToString();
+                }
+            }
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            int isNull = 0;
+            string[] newData = new string[colCount];
+            int selectedIndex = dataGridView.CurrentCell.RowIndex;
+
+            for (int i = 0; i < colCount; i++)
+            {
+                newData[i] = textBoxs[i].Text;
+                if (newData[i] == null) isNull++;
+            }
+
+            if (isNull > 0)
+            {
+                MessageBox.Show("There is Empty Text Field.");
+            }
+            else
+            {
+                for (int i = 0; i < colCount; i++)
+                {
+                    dataGridView.Rows[selectedIndex].Cells[headers[j]].Value = newData[i];
+                }
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clearModifyTable()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                labels[i].Text = "";
+                textBoxs[i].Clear();
+                labels[i].Visible = false;
+                textBoxs[i].Visible = false;
+            }
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
@@ -42,13 +87,15 @@ namespace PortfolioQ6CSVReader
 
             if (path != null)
             {
+                clearModifyTable();
+
                 var streamReader = new StreamReader(path);
                 var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
 
                 Console.WriteLine(csvReader.Read());
                 Console.WriteLine(csvReader.ReadHeader());
                 headers = csvReader.HeaderRecord;
-                int colCount = headers.Length;
+                colCount = headers.Length;
                 //Console.WriteLine("[{0}]", string.Join(", ", headers) + colCount);
                 dataGridView.ColumnCount = colCount;
                 for (int i = 0; i < colCount; i++)
@@ -141,6 +188,7 @@ namespace PortfolioQ6CSVReader
 
                             File.WriteAllLines(sfd.FileName, outputCsv, Encoding.UTF8);
                             statusLabel.Text = "Data Exported Successfully !";
+                            clearModifyTable();
                         }
                         catch (Exception ex)
                         {

@@ -82,6 +82,7 @@ namespace PortfolioQ6CSVReader
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(726, 303);
             this.dataGridView.TabIndex = 10;
+            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // statusStrip
             // 
@@ -172,7 +173,7 @@ namespace PortfolioQ6CSVReader
             this.groupBox1.Size = new System.Drawing.Size(726, 156);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Change Table";
+            this.groupBox1.Text = "Modify Table";
             // 
             // textBox1
             // 
