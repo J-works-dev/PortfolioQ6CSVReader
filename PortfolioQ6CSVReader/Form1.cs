@@ -17,15 +17,21 @@ namespace PortfolioQ6CSVReader
     {
         private Label[] labels;
         private TextBox[] textBoxs;
+        string[] headers;
         public Form1()
         {
             InitializeComponent();
             
-            labels = new Label[] { label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11 };
-            textBoxs = new TextBox[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10, textBox11 };
+            labels = new Label[] { label1, label2, label3, label4, label5, label6, label7, label8, label9, label10 };
+            textBoxs = new TextBox[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10 };
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
 
         }
@@ -41,7 +47,7 @@ namespace PortfolioQ6CSVReader
 
                 Console.WriteLine(csvReader.Read());
                 Console.WriteLine(csvReader.ReadHeader());
-                string[] headers = csvReader.HeaderRecord;
+                headers = csvReader.HeaderRecord;
                 int colCount = headers.Length;
                 //Console.WriteLine("[{0}]", string.Join(", ", headers) + colCount);
                 dataGridView.ColumnCount = colCount;
@@ -90,8 +96,63 @@ namespace PortfolioQ6CSVReader
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            DataSet customersDataSet = new DataSet();
+            if (dataGridView.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "CSV (*.csv)|*.csv";
+                sfd.FileName = "Result.csv";
+                bool fileError = false;
+                dataGridView.AllowUserToAddRows = false;
 
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            statusLabel.Text = "Error: Unable to write = " + ex.Message;
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            int columnCount = dataGridView.Columns.Count;
+                            string columnNames = "";
+                            string[] outputCsv = new string[dataGridView.Rows.Count + 1];
+                            for (int i = 0; i < columnCount; i++)
+                            {
+                                columnNames += dataGridView.Columns[i].HeaderText.ToString() + ",";
+                            }
+                            outputCsv[0] += columnNames;
+
+                            for (int i = 1; (i - 1) < dataGridView.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < columnCount; j++)
+                                {
+                                    outputCsv[i] += dataGridView.Rows[i - 1].Cells[headers[j]].Value.ToString() + ",";
+                                }
+                            }
+
+                            File.WriteAllLines(sfd.FileName, outputCsv, Encoding.UTF8);
+                            statusLabel.Text = "Data Exported Successfully !";
+                        }
+                        catch (Exception ex)
+                        {
+                            statusLabel.Text = "Error :" + ex.Message;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                statusLabel.Text = "No Record To Export !";
+            }
         }
     }
 }

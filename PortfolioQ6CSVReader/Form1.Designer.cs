@@ -58,8 +58,7 @@ namespace PortfolioQ6CSVReader
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -110,9 +109,9 @@ namespace PortfolioQ6CSVReader
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonSave.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(124, 528);
+            this.buttonSave.Location = new System.Drawing.Point(152, 519);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(105, 50);
+            this.buttonSave.Size = new System.Drawing.Size(133, 59);
             this.buttonSave.TabIndex = 20;
             this.buttonSave.Text = "Export CSV";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -123,9 +122,9 @@ namespace PortfolioQ6CSVReader
             this.buttonOpen.BackColor = System.Drawing.Color.Red;
             this.buttonOpen.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOpen.ForeColor = System.Drawing.Color.White;
-            this.buttonOpen.Location = new System.Drawing.Point(13, 528);
+            this.buttonOpen.Location = new System.Drawing.Point(13, 519);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(105, 50);
+            this.buttonOpen.Size = new System.Drawing.Size(133, 59);
             this.buttonOpen.TabIndex = 21;
             this.buttonOpen.Text = "Import CSV";
             this.buttonOpen.UseVisualStyleBackColor = false;
@@ -133,10 +132,10 @@ namespace PortfolioQ6CSVReader
             // 
             // buttonChange
             // 
-            this.buttonChange.BackColor = System.Drawing.Color.Red;
+            this.buttonChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonChange.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChange.ForeColor = System.Drawing.Color.White;
-            this.buttonChange.Location = new System.Drawing.Point(558, 100);
+            this.buttonChange.Location = new System.Drawing.Point(455, 100);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(152, 41);
             this.buttonChange.TabIndex = 23;
@@ -146,8 +145,7 @@ namespace PortfolioQ6CSVReader
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.buttonDelete);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.textBox10);
             this.groupBox1.Controls.Add(this.label9);
@@ -356,23 +354,18 @@ namespace PortfolioQ6CSVReader
             this.textBox10.TabIndex = 42;
             this.textBox10.Visible = false;
             // 
-            // label11
+            // buttonDelete
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 87);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 17);
-            this.label11.TabIndex = 45;
-            this.label11.Text = "label11";
-            this.label11.Visible = false;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(435, 110);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 22);
-            this.textBox11.TabIndex = 44;
-            this.textBox11.Visible = false;
+            this.buttonDelete.BackColor = System.Drawing.Color.Red;
+            this.buttonDelete.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(613, 100);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(100, 41);
+            this.buttonDelete.TabIndex = 44;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form1
             // 
@@ -408,8 +401,6 @@ namespace PortfolioQ6CSVReader
         private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label9;
@@ -430,6 +421,7 @@ namespace PortfolioQ6CSVReader
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 
