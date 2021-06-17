@@ -114,7 +114,7 @@ namespace PortfolioQ6CSVReader
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(105, 50);
             this.buttonSave.TabIndex = 20;
-            this.buttonSave.Text = "Save CSV";
+            this.buttonSave.Text = "Export CSV";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -127,7 +127,7 @@ namespace PortfolioQ6CSVReader
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(105, 50);
             this.buttonOpen.TabIndex = 21;
-            this.buttonOpen.Text = "Open CSV";
+            this.buttonOpen.Text = "Import CSV";
             this.buttonOpen.UseVisualStyleBackColor = false;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
